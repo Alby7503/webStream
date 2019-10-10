@@ -11,13 +11,25 @@
 <script>
     function receive() {
         let xmlhr = new XMLHttpRequest();
-        xmlhr.open("VIDEO", window.location.href + "/main.py");
+        xmlhr.open("VIDEO", window.location.href + "main.py");
         xmlhr.send();
         xmlhr.onload = function () {
             document.getElementById("image").src = "data:image/png;base64," + xmlhr.response;
+            setTimeout(receive, 50);
         }
-        setTimeout(receive, 500);
+        xmlhr.onerror = function () {
+            alert("An error has occurred");
+            setTimeout(receive, 1500);
+        }
     }
 </script>
+<style>
+    #image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 120vh;
+    }
+</style>
 
 </html>
