@@ -11,11 +11,11 @@
 <script>
     function receive() {
         let xmlhr = new XMLHttpRequest();
-        xmlhr.open("VIDEO", window.location.href + "main.py");
+        xmlhr.open("VIDEO", window.location.href + "stream.py");
         xmlhr.send();
         xmlhr.onload = function () {
             document.getElementById("image").src = "data:image/png;base64," + xmlhr.response;
-            setTimeout(receive, 50);
+            setTimeout(receive, 75);
         }
         xmlhr.onerror = function () {
             alert("An error has occurred");
